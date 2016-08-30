@@ -5,6 +5,18 @@ var models = require('../models');
 var passport = require('passport');
 var allInfo = {};
 
+var multer = require('multer')
+
+var storage = multer.diskStorage({
+	destination: function(req, file, data){
+		data(null, '/public/assets/assessments')
+	},
+	filename: function(req, file, dataName){
+		dataname(null, file.fieldname);
+	}
+})
+var upload = multer ({storage: storage});
+
 function getTables(){
 	models.Department.findAll({})
 	.then(function(data){
@@ -206,13 +218,16 @@ router.get('/api/training/:name/employee', authorized, function(req, res) {
 // Save training
 router.post('/api/training', authorized, function(req, res) {
 	console.log(chalk.black.bgYellow('POST /api/training/'));
+	console.log(reqs)
+	// console.log(training.location)
 	models.Training.create({
 		name: req.body.trainingName,
 		trainingType: req.body.trainingType,
-		location: req.body.location
+		location: req.body.uploadFile
 	}).then(function(training) {
 		console.log('training', training);
-		res.redirect('/api');
+		// upload(req.body.location)
+		res.redirect('/admin');
 	})
 })
 // Assign training to department and its employees

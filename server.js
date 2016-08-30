@@ -7,6 +7,7 @@ var session = require('express-session');
 var SequelizeStore = require('connect-session-sequelize')(session.Store);
 var LocalStrategy = require('passport-local').Strategy;
 var methodOverride = require('method-override')
+var multer = require('multer')
 
 var routes = require('./controllers/routes_controller.js');
 
@@ -22,6 +23,15 @@ sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
 })
 
 var app = express();
+var storage = multer.diskStorage({
+	destination: function(req, file, data){
+		data(null, '/public/assets/assessments')
+	},
+	filename: function(req, file, dataName){
+		dataname(null, file.fieldname);
+	}
+})
+var upload = multer ({storage: storage})
 
 app.use(express.static(process.cwd() + '/public'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));

@@ -4,10 +4,13 @@
         <div class="navbar-header">
             <p class="navbar-brand">JADE Leading Online Assessments</p>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a id="btnAdmin" class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a id="btnAdmin" href="#">Profile</a></li>
+                    </ul>
                 </li>
                 <li>
                 	<a>
@@ -84,7 +87,9 @@
 								<th>Training Name<th>
 								<th>Type<th>
 								<th>Repository<th>
-								<th><button type="button" class="btn btn-info">New</button><th>
+								<th> <div class="row text-center">
+                                  <a href="#" class="btn btn-info" data-toggle="modal" data-target="#basicModal">New</a>
+                              </div><th>
 							</tr>
 						</thead>
 						<tbody>
@@ -216,6 +221,76 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add New Training</h4>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/api/training">
+            <div class="form-group">
+                <label for="trainingNameInput">Training Name</label>
+                <input type="text" class="form-control" placeholder="Place Name Here" name="trainingName">
+            </div>
+             <div class="form-group">
+                <label for="trainingType">Training Type</label>
+                <input type="text" class="form-control" placeholder="Place Name Here" name="trainingType">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">File input</label>
+                <input type="file" id="uploadFile">
+                <p class="help-block">Example block-level help text here.</p>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Check me out
+                </label>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Large Modal</h4>
+      </div>
+      <div class="modal-body">
+        <h3>Modal Body</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModal" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Small Modal</h4>
+      </div>
+      <div class="modal-body">
+        <h3>Modal Body</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- /Main -->
 
 <footer class="text-center"><h5>&copy; Copyright 2016 JADE Rutgers Bootcamp</h5></footer>
@@ -240,14 +315,30 @@
 <!-- modal end -->
 
 
+<!-- The Modal for adding new Trainings-->
+  {{!--   <div id="trainingModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span id="close" class="close">&#10006</span>
+            <h2>JADE</h2>
+        </div>
+        <div class="modal-body" id="addTraining">
+            <h3>Hello {{data.admin.name}}, Please fill out the form below</h3>
+            
+        </div>
+        <div class="modal-footer" id="modalFooter">
+            <h3>Leading Online Assessments</h3>
+        </div>
+    </div> --}}
+
+<!-- modal end -->
 <!-- script references -->
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="/assets/css/admin.css" type="text/css"/>
 	<script src="/assets/js/admin.js"></script>
-	<script src="/assets/js/adminBootstrap.min.js"></script>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 
 
