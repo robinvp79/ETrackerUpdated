@@ -1,0 +1,253 @@
+<!-- Header -->
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-brand">JADE Leading Online Assessments</p>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a id="btnAdmin" class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+                </li>
+                <li>
+                	<a>
+                	<form action="/logout" method="GET">
+						<input type="hidden">
+						<button id="btnLogout" type="submit"><i class="glyphicon glyphicon-lock"></i> Logout</button>
+					</form>
+					</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /Header -->
+
+<!-- Main -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <!-- Left column -->
+            <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Tools</strong></a>
+            <hr>
+            <ul class="nav nav-stacked">
+                <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">Departments <i class="glyphicon glyphicon-chevron-down"></i></a>
+                    <ul class="nav nav-stacked collapse in" id="userMenu">
+                    	{{#each data.departments}}
+                    		<li><a> {{this.dataValues.id}}.- {{this.dataValues.name}}</a></li>
+                    	{{/each}}
+                    </ul>
+                </li>
+                <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#menu2"> Trainings <i class="glyphicon glyphicon-chevron-right"></i></a>
+                    <ul class="nav nav-stacked collapse" id="menu2">
+                    	{{#each data.trainings}}
+                    		<li><a> {{this.dataValues.id}}.- {{this.dataValues.name}}</a></li>
+                    	{{/each}}
+                    </ul>
+                </li>
+                <li class="nav-header">
+                    <a href="#" data-toggle="collapse" data-target="#menu3"> Employees <i class="glyphicon glyphicon-chevron-right"></i></a>
+                    <ul class="nav nav-stacked collapse" id="menu3">
+                        {{#each data.employees}}
+                    		<li><a> {{this.dataValues.id}}.- {{this.dataValues.name}}</a></li>
+                    	{{/each}}
+                    </ul>
+                </li>
+            </ul>
+            <hr>
+            <a href="/logout"><strong><i class="glyphicon glyphicon-lock"></i> Log Out</strong></a>
+            <hr>
+            <div class="panel panel-default">
+                <img class="images" src="/assets/img/training2.jpg">
+            </div>
+            <hr>
+            <div class="panel panel-default">
+                <img class="images" src="/assets/img/training.jpg">
+            </div>
+            <hr>
+        </div>
+        <!-- /col-3 -->
+        <div class="col-sm-9">
+        	<div class="col-md-12">
+                <div class="alert alert-info">
+                    <h3><button type="button" class="close" data-dismiss="alert">×</button>
+                    WELCOME BACK {{data.admin.name}}.</h3>
+                </div>
+	        </div>
+        	<div class="col-md-12">
+				<div class="panel panel-danger">
+					<div class="panel-heading">Pending Trainings</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Training Name<th>
+								<th>Type<th>
+								<th>Repository<th>
+								<th><button type="button" class="btn btn-info">New</button><th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each data.trainings}}
+							<tr>
+								<th>{{this.dataValues.id}}</th>
+								<th>{{this.dataValues.name}}<th>
+								<th>{{this.dataValues.trainingType}}<th>
+								<th>{{this.dataValues.location}}<th>
+								<th>
+									<button type="button" class="btn btn-warning">Edit</button>
+									<button type="button" class="btn btn-danger">Delete</button>
+								<th>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="panel panel-success">
+					<div class="panel-heading">Employees</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Employee Name<th>
+								<th>Username<th>
+								<th>Account Type<th>
+								<th><button type="button" class="btn btn-info">New</button><th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each data.employees}}
+							<tr>
+								<th>{{this.dataValues.id}}</th>
+								<th>{{this.dataValues.name}}<th>
+								<th>{{this.dataValues.username}}<th>
+								<th>{{this.dataValues.accountType}}<th>
+								<th>
+									<button type="button" class="btn btn-warning">Edit</button>
+									<button type="button" class="btn btn-danger">Delete</button>
+								<th>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+				<hr>
+			</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Reports</h4>
+                        </div>
+                        <div class="panel-body">
+                            <small>Success</small>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%">
+                                    <span class="sr-only">72% Complete</span>
+                                </div>
+                            </div>
+                            <small>Info</small>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                    <span class="sr-only">20% Complete</span>
+                                </div>
+                            </div>
+                            <small>Warning</small>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                    <span class="sr-only">60% Complete (warning)</span>
+                                </div>
+                            </div>
+                            <small>Pending</small>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                    <span class="sr-only">80% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="panel">
+                        <ul class="nav nav-tabs" id="myTab">
+                            <li class="active"><a href="#departments" data-toggle="tab">Departments</a></li>
+                            <li><a href="#trainings" data-toggle="tab">Trainings</a></li>
+                            <li><a href="#employees" data-toggle="tab">Employees</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active well" id="departments">
+                            	<h4><i class="glyphicon glyphicon-cog"></i></h4>
+                                {{#each data.departments}}
+		                    		<li>{{this.dataValues.id}}.- {{this.dataValues.name}}</li>
+		                    	{{/each}}
+                            </div>
+                            <div class="tab-pane well" id="trainings">
+                                <h4><i class="glyphicon glyphicon-comment"></i></h4>
+                                {{#each data.trainings}}
+		                    		<li>{{this.dataValues.id}}.- {{this.dataValues.name}}</li>
+		                    	{{/each}}
+                            </div>
+                            <div class="tab-pane well" id="employees">
+                            	<h4><i class="glyphicon glyphicon-user"></i></h4>
+                                {{#each data.employees}}
+		                    		<li>{{this.dataValues.id}}.- {{this.dataValues.name}}</li>
+		                    	{{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <img class="images" src="/assets/img/pic1.jpg">
+                    </div>
+                    <hr>
+                    <div class="panel panel-default">
+                        <img class="images" src="/assets/img/online.jpg">
+                    </div>
+                    <hr>
+                    <a id="btnAdmin2" href="#"><strong><i class="glyphicon glyphicon-dashboard"></i> My Dashboard</strong></a>
+                    <hr>
+                </div>
+            </div>
+            <hr>
+            <a id="right" href="#"><strong><i class="glyphicon glyphicon-comment"></i> Back To Top</strong></a>
+            <hr>
+        </div>
+    </div>
+</div>
+<!-- /Main -->
+
+<footer class="text-center"><h5>&copy; Copyright 2016 JADE Rutgers Bootcamp</h5></footer>
+
+<!-- The Modal -->
+	<div id="myModal" class="modal">
+  	<!-- Modal content -->
+  	<div class="modal-content">
+    	<div class="modal-header">
+      		<span id="close" class="close">&#10006</span>
+      		<h2>JADE</h2>
+    	</div>
+    	<div class="modal-body" id="adminInfo">
+    		<h3>{{data.admin.name}}</h3>
+    		<h3>is the Admin logged in at this time</h3>
+        	<h3>Please don't forget to log out at the end of your session.</h3>
+    	</div>
+    	<div class="modal-footer" id="modalFooter">
+      		<h3>Leading Online Assessments</h3>
+    	</div>
+  	</div>
+<!-- modal end -->
+
+
+<!-- script references -->
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="/assets/css/admin.css" type="text/css"/>
+	<script src="/assets/js/admin.js"></script>
+	<script src="/assets/js/adminBootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+

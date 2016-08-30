@@ -1,0 +1,218 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <p class="navbar-brand">JADE Leading Online Assessments</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> User <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a id="btnUser" href="#">Profile</a></li>
+          </ul>
+        </li>
+        <li>
+          <a>
+          <form action="/logout" method="GET">
+            <input type="hidden">
+            <button id="btnLogout" type="submit"><i class="glyphicon glyphicon-lock"></i> Logout</button>
+          </form>
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div id="back" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <!-- Left column -->
+      <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Employee</strong></a>
+      <hr>
+      <ul class="nav nav-stacked">
+        <li class="nav-header">
+          <a href="#" data-toggle="collapse" data-target="#userMenu">Id <i class="glyphicon glyphicon-chevron-down"></i></a>
+          <ul class="nav nav-stacked collapse in" id="userMenu">
+            <li> || Your Id : {{data.id}}</li>
+          </ul>
+        </li>
+        <li class="nav-header">
+          <a href="#" data-toggle="collapse" data-target="#menu2"> Name <i class="glyphicon glyphicon-chevron-right"></i></a>
+          <ul class="nav nav-stacked collapse" id="menu2">
+            <li> || {{data.name}}</li>
+          </ul>
+        </li>
+        <li class="nav-header">
+          <a href="#" data-toggle="collapse" data-target="#menu3"> Username <i class="glyphicon glyphicon-chevron-right"></i></a>
+          <ul class="nav nav-stacked collapse" id="menu3">
+              <li> || {{data.username}}</li>
+          </ul>
+        </li>
+        <li class="nav-header">
+          <a href="#" data-toggle="collapse" data-target="#menu4"> DoB <i class="glyphicon glyphicon-chevron-right"></i></a>
+          <ul class="nav nav-stacked collapse" id="menu4">
+              <li> || {{data.dob}}</li>
+          </ul>
+        </li>
+        <li class="nav-header">
+          <a href="#" data-toggle="collapse" data-target="#menu5"> Account Type <i class="glyphicon glyphicon-chevron-right"></i></a>
+          <ul class="nav nav-stacked collapse" id="menu5">
+              <li> || {{data.accountType}}</li>
+          </ul>
+        </li>
+      </ul>
+      <hr>
+      <a id="btnUser2" href="#"><strong><i class="glyphicon glyphicon-dashboard"></i> My Dashboard</strong></a>
+      <hr>
+      <a href="/logout"><strong><i class="glyphicon glyphicon-lock"></i> Log Out</strong></a>
+      <hr>
+      <div class="panel panel-default">
+          <img class="images" src="/assets/img/training.jpg">
+      </div>
+      <hr>
+    </div>
+    <!-- /col-3 -->
+    <div class="col-sm-9">
+      <div class="col-md-12">
+        <div class="alert alert-info">
+          <h3><button type="button" class="close" data-dismiss="alert">×</button>
+          WELCOME BACK {{data.name}}.</h3>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="panel panel-danger">
+          <div class="panel-heading">Pending Trainings</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Training Name<th>
+                <th>Email<th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each data.trainings}}
+              <tr>
+                <th>{{this.dataValues.name}}<th>
+                <th>Email Needed<th>
+                <th>
+                  <button type="button" class="btn btn-warning">Start Training</button>
+                <th>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="panel panel-success">
+          <div class="panel-heading">Completed Trainings</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Training Name<th>
+                <th>Date<th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each data.trainings}}
+              <tr>
+                <th>{{this.dataValues.name}}<th>
+                <th>Date to be completed<th>
+                <th>
+                  <button type="button" class="btn btn-warning">Edit</button>
+                  <button type="button" class="btn btn-danger">Delete</button>
+                <th>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel">
+            <ul class="nav nav-tabs" id="myTab">
+                <li class="active"><a href="#employee" data-toggle="tab">Employee Profile</a></li>
+                <li><a href="#pending" data-toggle="tab">Pending Trainings</a></li>
+                <li><a href="#completed" data-toggle="tab">Completed Trainings</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active well" id="employee">
+                <h4><i class="glyphicon glyphicon-user"></i></h4>
+                  <li>Id  :  {{data.id}}</li>
+                  <li>Name  :  {{data.name}}</li>
+                  <li>Username  :  {{data.username}}</li>
+                  <li>DoB  :  {{data.dob}}</li>
+                  <li>Account Type : {{data.accountType}}</li>
+              </div>
+              <div class="tab-pane well" id="pending">
+                <h4><i class="glyphicon glyphicon-comment"></i></h4>
+                {{#each data.trainings}}
+                  <li>{{this.dataValues.id}}.- {{this.dataValues.name}}</li>
+                {{/each}}
+              </div>
+              <div class="tab-pane well" id="completed">
+                <h4><i class="glyphicon glyphicon-cog"></i></h4>
+                {{#each data.trainings}}
+                  <li>{{this.dataValues.id}}.- {{this.dataValues.name}}</li>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <img class="images" src="/assets/img/training2.jpg">
+          </div>
+          <hr>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <img class="images" src="/assets/img/pic1.jpg">
+          </div>
+          <hr>
+          <div class="panel panel-default">
+            <img class="images" src="/assets/img/online.jpg">
+          </div>
+          <hr>
+        </div>
+      </div>
+      <hr>
+      <a id="right" href="#"><strong><i class="glyphicon glyphicon-comment"></i> Back To Top</strong></a>
+      <hr>
+    </div>
+  </div>
+</div>
+<!-- /Main -->
+
+<footer class="text-center"><h5>&copy; Copyright 2016 JADE Rutgers Bootcamp</h5></footer>
+
+
+<!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+          <span id="close" class="close">&#10006</span>
+          <h2>JADE</h2>
+      </div>
+      <div class="modal-body" id="userInfo">
+        <h3>{{data.name}}</h3>
+        <h3>is the User logged in at this time</h3>
+        <h3>Please don't forget to log out at the end of your session.</h3>
+      </div>
+      <div class="modal-footer" id="modalFooter">
+          <h3>Leading Online Assessments</h3>
+      </div>
+    </div>
+<!-- modal end -->
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/user.css">
+<script src="/assets/js/user.js"></script>
+
+
+
+

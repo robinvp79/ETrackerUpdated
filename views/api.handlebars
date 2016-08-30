@@ -1,0 +1,92 @@
+<div class="container">
+	<h1> ETrack API </h1>
+	<div class="list-group">
+		<a class="list-group-item" href="/api/employee">/api/employee</a>
+		<a class="list-group-item" href="/api/department">/api/department</a>
+		<a class="list-group-item" href="/api/training">/api/training</a>
+	</div>
+</div>
+
+<hr>
+<hr>
+<div class="container">
+	<h3>Create Form</h3>
+		<form method="POST" action="/api/training">
+			<div class="form-group">
+				<label for="trainingNameInput">Training Name</label>
+				<input type="text" class="form-control" placeholder="Place Name Here" name="trainingName">
+			</div>
+			 <div class="form-group">
+				<select multiple class="form-control deptChosen" name="dept">
+				<option>Human Resources</option>
+				<option>Legal</option>
+				<option>Finance</option>
+				<option>IT</option>
+				<option>Marketing</option>
+			</select>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputFile">File input</label>
+				<input type="file" id="exampleInputFile">
+				<p class="help-block">Example block-level help text here.</p>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"> Check me out
+				</label>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+</div>
+<hr>
+<hr>
+
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+		<form method="POST" action="/api/training/department">
+			<div class="form-group">
+				<label for="TrainingId">Training Id</label>
+				<input type="text" class="form-control" placeholder="Training Id" name="trainingId">
+				<label for="DepartmentId">Department Id</label>
+				<input type="text" class="form-control" placeholder="Department Id" name="departmentId">
+			</div>
+			<button class="form-control btn btn-lg btn-success" type="submit">Try this ...!</button>
+		</form>
+	</div>
+</div>
+
+<hr>
+<hr>
+
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+		<form method="POST" action="/api/training/employee">
+			<div class="form-group">
+				<label for="TrainingId">Training Id</label>
+				<input type="text" class="form-control" placeholder="Training Id" name="trainingId">
+				<label for="EmployeeId">Employee Id</label>
+				<input type="text" class="form-control" placeholder="Employee Id" name="employeeId">
+			</div>
+			<button class="form-control btn btn-lg btn-success" type="submit">Try this ...!</button>
+		</form>
+	</div>
+</div>
+<hr>
+<hr>
+
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+		<form method="POST" action="/api/training/completed?_method=PUT">
+			<div class="form-group">
+				<label for="EmployeeId">Employee Id</label>
+				<input type="text" class="form-control" placeholder="Employee iD" name="employeeId">
+				<label for="Training ID">Training Id</label>
+				<input type="text" class="form-control" placeholder="Training Id" name="trainingId">
+			</div>
+			<button class="form-control btn btn-lg btn-success" type="submit">Try this ...!</button>
+		</form>
+	</div>
+</div>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
